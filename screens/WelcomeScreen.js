@@ -27,8 +27,8 @@ export default class WelcomeScreen extends Component {
           }}
         >
           <Image
-            source={require('../assets/CarpeMedLogo.png')}
-            style={{ flex: 1, height, width }}
+            source={require('../assets/CarpeReal.png')}
+            style={{ flex: 1, height, width, top: 30 }}
           />
         </View>
         <View
@@ -47,25 +47,10 @@ export default class WelcomeScreen extends Component {
               marginBottom: 10
             }}
             onPress={() => {
-              this.props.navigation.navigate('HomeScreen');
+              this.props.navigation.navigate('LoginScreen');
             }}
           >
             Login
-          </Button>
-
-          <Button
-            style={{
-              width: 200,
-              backgroundColor: 'transparent',
-              borderWidth: 0.5,
-              borderColor: colors.borderColor
-            }}
-            mode='contained'
-            onPress={() => {
-              this.props.navigation.navigate('CreateAccountScreen');
-            }}
-          >
-            Create Account
           </Button>
         </View>
       </View>

@@ -1,29 +1,63 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import MapView from 'react-native-maps';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { List } from 'react-native-paper';
+import Map from '../components/Map';
+import { Ionicons } from '@expo/vector-icons';
 
 class LocationScreen extends Component {
+  static navigationOptions = {
+    headerTitle: 'Locations'
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <View
-          style={{
-            height: 400,
-            width: 400,
-            justifyContent: 'flex-end',
-            alignItems: 'center'
-          }}
-        >
-          <MapView
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421
-            }}
-          />
+        <View style={{ flex: 1, borderTopWidth: 0.5, borderColor: 'black' }}>
+          <Map />
         </View>
-        <View style={{ flex: 1, backgroundColor: 'red' }} />
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+          <ScrollView>
+            <List.Section>
+              <List.Subheader>Nearest Hospitals </List.Subheader>
+              <List.Item
+                title='Sutter Urgent Care'
+                left={() => (
+                  <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../assets/sutterUrgent.jpeg')}
+                  />
+                )}
+              />
+              <List.Item
+                title='Highland Hospital'
+                left={() => (
+                  <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../assets/sutterUrgent.jpeg')}
+                  />
+                )}
+              />
+              <List.Item
+                title="UCSF Benioff Children's Hospital"
+                left={() => (
+                  <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../assets/sutterUrgent.jpeg')}
+                  />
+                )}
+              />
+              <List.Item
+                title='Carbon Health'
+                left={() => (
+                  <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../assets/sutterUrgent.jpeg')}
+                  />
+                )}
+              />
+            </List.Section>
+          </ScrollView>
+        </View>
       </View>
     );
   }

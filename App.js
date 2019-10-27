@@ -15,25 +15,37 @@ import {
 } from 'react-navigation';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
-import CreateAccountScreen from './screens/CreateAccountScreen';
+import LoginScreen from './screens/LoginScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import LocationScreen from './screens/LocationScreen';
+import SymptomsScreen from './screens/SymptomsScreen';
 import { Ionicons } from '@expo/vector-icons';
+import CustomDrawerComponent from './components/CustomDrawerComponent';
 
 const App = () => <AppContainer />;
 
-const LoginStackNavigator = createStackNavigator({
-  WelcomeScreen: {
-    screen: WelcomeScreen,
-    navigationOptions: {
-      header: null
+const LoginStackNavigator = createStackNavigator(
+  {
+    WelcomeScreen: {
+      screen: WelcomeScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    LoginScreen: {
+      screen: LoginScreen
     }
   },
-  CreateAccountScreen: {
-    screen: CreateAccountScreen
+  {
+    mode: 'modal',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'white'
+      }
+    }
   }
-});
+);
 
 const HomeStackNavigator = createStackNavigator({
   HomeScreen: {
@@ -43,25 +55,31 @@ const HomeStackNavigator = createStackNavigator({
     }
   },
   LocationScreen,
-  ProfileScreen
+  ProfileScreen,
+  SymptomsScreen
 });
 
-const AppDrawerNavigator = createDrawerNavigator({
-  HomeScreen: {
-    screen: HomeStackNavigator,
-    navigationOptions: {
-      title: 'Body',
-      drawerIcon: () => <Ionicons name='ios-body' size={24} />
+const AppDrawerNavigator = createDrawerNavigator(
+  {
+    HomeScreen: {
+      screen: HomeStackNavigator,
+      navigationOptions: {
+        title: 'Body',
+        drawerIcon: () => <Ionicons name='ios-body' size={24} />
+      }
+    },
+    SettingsScreen: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Settings',
+        drawerIcon: () => <Ionicons name='ios-settings' size={24} />
+      }
     }
   },
-  SettingsScreen: {
-    screen: SettingsScreen,
-    navigationOptions: {
-      title: 'Settings',
-      drawerIcon: () => <Ionicons name='ios-settings' size={24} />
-    }
+  {
+    contentComponent: CustomDrawerComponent
   }
-});
+);
 
 const AppSwitchNavigator = createSwitchNavigator({
   LoginStackNavigator,

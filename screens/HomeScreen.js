@@ -4,8 +4,12 @@ import {
   Text,
   View,
   SafeAreaView,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
+import { Headline } from 'react-native-paper';
+import PlanTrip from '../components/PlanTrip';
+import SelfPlan from '../components/SelfPlan';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../assets/colors';
 
@@ -17,12 +21,28 @@ export default class HomeScreen extends Component {
         <View style={styles.header}>
           <Text style={styles.headerTitle}> Carpe Med </Text>
         </View>
-        <View style={{ flex: 1 }} />
+        <ScrollView>
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <View style={{ flex: 1, marginBottom: 10 }}>
+              <PlanTrip />
+            </View>
+            <View style={{ flex: 1, marginBottom: 10 }}>
+              <SelfPlan />
+            </View>
+            <View style={{ flex: 1 }}>
+              <PlanTrip />
+            </View>
+          </View>
+        </ScrollView>
         <View
           style={{
             height: 70,
-            borderTopWidth: 0.5,
-            borderTopColor: colors.borderColor,
             flexDirection: 'row'
           }}
         >
@@ -34,7 +54,7 @@ export default class HomeScreen extends Component {
                 this.props.navigation.navigate('HomeScreen');
               }}
             >
-              <Ionicons name='ios-body' size={30} />
+              <Ionicons name='ios-body' size={30} color='white' />
             </TouchableOpacity>
           </View>
           <View
@@ -45,7 +65,7 @@ export default class HomeScreen extends Component {
                 this.props.navigation.navigate('LocationScreen');
               }}
             >
-              <Ionicons name='ios-medkit' size={30} />
+              <Ionicons name='ios-medkit' size={30} color='white' />
             </TouchableOpacity>
           </View>
           <View
@@ -56,7 +76,7 @@ export default class HomeScreen extends Component {
                 this.props.navigation.navigate('ProfileScreen');
               }}
             >
-              <Ionicons name='ios-person' size={30} />
+              <Ionicons name='ios-person' size={30} color='white' />
             </TouchableOpacity>
           </View>
         </View>
@@ -68,16 +88,16 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#2E424D'
   },
   header: {
     height: 70,
-    borderBottomWidth: 0.5,
-    borderBottomColor: colors.borderColor,
     alignItems: 'center',
     justifyContent: 'center'
   },
   headerTitle: {
-    fontSize: 24
+    fontSize: 24,
+    color: 'white'
   }
 });

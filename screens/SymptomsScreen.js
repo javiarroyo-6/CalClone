@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class CreateAccountScreen extends Component {
+export default class SymptomsScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>CreateAccountScreen</Text>
+        <Text>Symptoms</Text>
       </View>
     );
   }
 }
-export default CreateAccountScreen;
 
 const styles = StyleSheet.create({
   container: {
