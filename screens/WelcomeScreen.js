@@ -1,0 +1,82 @@
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity
+} from 'react-native';
+import colors from '../assets/colors';
+import { Button } from 'react-native-paper';
+import VideoBackground from '../components/VideoBackground';
+
+import { Ionicons } from '@expo/vector-icons';
+
+export default class WelcomeScreen extends Component {
+  render() {
+    const { width, height } = Dimensions.get('window');
+
+    return (
+      <View style={{ flex: 1, backgroundColor: '#bfbfbf' }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Image
+            source={require('../assets/CarpeMedLogo.png')}
+            style={{ flex: 1, height, width }}
+          />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Button
+            style={{
+              width: 200,
+              backgroundColor: 'transparent',
+              borderWidth: 0.5,
+              borderColor: colors.borderColor,
+              marginBottom: 10
+            }}
+            onPress={() => {
+              this.props.navigation.navigate('HomeScreen');
+            }}
+          >
+            Login
+          </Button>
+
+          <Button
+            style={{
+              width: 200,
+              backgroundColor: 'transparent',
+              borderWidth: 0.5,
+              borderColor: colors.borderColor
+            }}
+            mode='contained'
+            onPress={() => {
+              this.props.navigation.navigate('CreateAccountScreen');
+            }}
+          >
+            Create Account
+          </Button>
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+});
