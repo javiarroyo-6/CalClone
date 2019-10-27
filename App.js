@@ -19,11 +19,26 @@ import LoginScreen from './screens/LoginScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import LocationScreen from './screens/LocationScreen';
-import SymptomsScreen from './screens/SymptomsScreen';
+import LoadingScreen from './screens/LoadingScreen';
 import { Ionicons } from '@expo/vector-icons';
 import CustomDrawerComponent from './components/CustomDrawerComponent';
+import * as firebase from 'firebase/app';
+import { firebaseConfig } from './config/config';
 
-const App = () => <AppContainer />;
+class App extends Component {
+  constructor() {
+    super();
+    this.initializefirebase();
+  }
+
+  initializefirebase = () => {
+    firebase.initializeApp(firebaseConfig);
+  };
+
+  render() {
+    return <AppContainer />;
+  }
+}
 
 const LoginStackNavigator = createStackNavigator(
   {
@@ -34,7 +49,13 @@ const LoginStackNavigator = createStackNavigator(
       }
     },
     LoginScreen: {
-      screen: LoginScreen
+      screen: LoginScreen,
+      navigationOptions: {
+        headerTitle: 'Login',
+        headerStyle: {
+          backgroundColor: '#ffff4d'
+        }
+      }
     }
   },
   {
@@ -54,9 +75,23 @@ const HomeStackNavigator = createStackNavigator({
       header: null
     }
   },
-  LocationScreen,
-  ProfileScreen,
-  SymptomsScreen
+  LocationScreen: {
+    screen: LocationScreen,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#2E424D'
+      }
+    }
+  },
+  ProfileScreen: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      headerTitle: 'Profile',
+      headerStyle: {
+        backgroundColor: 'orange'
+      }
+    }
+  }
 });
 
 const AppDrawerNavigator = createDrawerNavigator(
@@ -82,6 +117,7 @@ const AppDrawerNavigator = createDrawerNavigator(
 );
 
 const AppSwitchNavigator = createSwitchNavigator({
+  LoadingScreen,
   LoginStackNavigator,
   AppDrawerNavigator
 });

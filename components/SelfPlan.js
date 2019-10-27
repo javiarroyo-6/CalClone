@@ -14,13 +14,7 @@ export default class SelfPlan extends Component {
         </Card.Content>
         <Card.Cover source={require('../assets/self.jpeg')} />
         <Card.Actions>
-          <Button
-            onPress={() => {
-              this.props.navigation.navigate('SymptomsScreen');
-            }}
-          >
-            Ok
-          </Button>
+          <Button onPress={() => alert('Hi im broken ...')}>Ok</Button>
         </Card.Actions>
       </Card>
     );

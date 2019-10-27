@@ -18,7 +18,7 @@ export default class WelcomeScreen extends Component {
     const { width, height } = Dimensions.get('window');
 
     return (
-      <View style={{ flex: 1, backgroundColor: '#bfbfbf' }}>
+      <View style={{ flex: 1, backgroundColor: '#ffff4d' }}>
         <View
           style={{
             flex: 1,
@@ -41,11 +41,12 @@ export default class WelcomeScreen extends Component {
           <Button
             style={{
               width: 200,
-              backgroundColor: 'transparent',
+              backgroundColor: '#4d88ff',
               borderWidth: 0.5,
               borderColor: colors.borderColor,
               marginBottom: 10
             }}
+            mode='contained'
             onPress={() => {
               this.props.navigation.navigate('LoginScreen');
             }}
